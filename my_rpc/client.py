@@ -55,3 +55,6 @@ def update_rpcvariable(context: RPCContext, variable: RPCVariable, value: np.nda
     writer.close()
 
     return variable
+
+def delete_rpcvariable(context: RPCContext, variable: RPCVariable):
+    context.client.do_action(pa.flight.Action("delete_variable", str(variable.uuid).encode('utf-8')))

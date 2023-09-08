@@ -50,3 +50,11 @@ def test_create_update_and_read(fixture_server):
     data2 = read_rpcvariable(context, remote_data_handle)
     
     assert np.array_equal(data1, data2)
+
+def test_create_and_delete(fixture_server):
+    context = fixture_server
+
+    data0 = np.array([[1,2,3],[4,5,6]], dtype=np.float64)
+    remote_data_handle = create_rpcvariable(context, data0)
+    delete_rpcvariable(context, remote_data_handle)
+    
